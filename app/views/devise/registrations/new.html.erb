@@ -1,7 +1,11 @@
 <h2>Sign up</h2>
 
 <%= form_with model: @user, url: user_registration_path do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+<!--form_forから上記に修正。"user.new"と同じ処理をしているので"@user"が使える。-->
+<%= render "devise/shared/error_messages", resource: resource %>
+<!--「render」はビューファイル内で他のファイルにも表示させるためのもの.「devise/shared/error_messages」ファイル内に「resource」変数を入れて使ってエラーメッセージを表示することができます-->
+<!--「devise/shared/error_messages」は、DeviseというGemで発生する認証関連のエラーメッセージをまとめて表示するためのパーシャルファイル-->
+  
   
   <div class="field">
   <%= f.label :name %><br>
