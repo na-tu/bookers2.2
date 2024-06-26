@@ -1,56 +1,62 @@
-<h>books#index</h>
 <main>
-  <h2>User info</h2>
-    <tbody> 
-      <% if current_user.profile_image .attached? %>
-       <%= image_tag profile_image, size: "100x100" %>
-      <% else %>
-      <%= image_tag 'no_image', size: "100x100" %>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3">
+<h>books#index</h>
+
+<div>
+  <%= flash[:notice]%>
+</div>
+
+<h2>User info</h2>
+  <tbody>
+    <% if current_user.profile_image .attached? %>
+    <%= image_tag profile_image, size: "100x100" %>
+    <% else %>
+    <%= image_tag 'no_image', size: "100x100" %>
+    <% end %>
+   
+  <br><th>name</th>
+    <th><%= @user.name %></th><br>
+  <th>introduction</th>
+    <th><%= @user.introduction%></th>
+
+  <%= link_to edit_user_path(@user) do %>
+  <i class="fas fa-user-edit"></i></i> 
+  <% end %>
+  </tbody>
+
+<h2>New book</h2>
+  <%= form_with model: @book do |f| %>
+    <h5>Title</h5>
+      <%= f.text_field :title %>
+    <h5>Opinion</h5>
+      <%= f.text_area :body %>
+      <%= f.submit 'Create Book' %>
       <% end %>
-      
-	    <th>name</th>
-      <th><%= @user.name %></th><br>
-      
-	    <th>introduction</th>
-	    <th><%= @user.introduction%></th>
-	     
-	     <%= link_to "edit", edit_user_path(@user)%>
-    </tbody>
-     
-  <h2>New book</h2>
-    <%= form_with model: @book do |f| %>
-      <h5>Title</h5>
-        <%= f.text_field :title %>
-      <h5>Opinion</h5>
-        <%= f.text_area :body %>  
-        <%= f.submit 'Create Book' %> 
-        <% end %>  
-        
-          
-        <h2>Books</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>title</th>
-                    <th>opinion</th>
-                </tr>
-            </thead>
-        </table>
+       </div>    
+
+<div class="col-md-8 offset-md-1">
+  <h2>Books</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>title</th>
+          <th>opinion</th>
+        </tr>
+      </thead>
+    </table>
 <% @books.each do |book| %>
  <tr>
-  <td>image</td>
-    <span>
+   <span>
      <% if current_user.profile_image .attached? %>
-       <%= image_tag profile_image, size: "100x100" %>
-      <% else %>
-      <%= image_tag 'no_image', size: "100x100" %>
-      <% end %>
-    </span>
-    <td><%= link_to book.title,user_path%></td>
-    <td><%= book.body %></td>
-    
-<% end %>
+     <%= image_tag profile_image, size: "100x100" %>
+     <% else %>
+     <%= image_tag 'no_image', size: "100x100" %>
+     <% end %>
+   </span>
 
-    <footer>
-      	<p>CopyRight Infratop.inc</p>
-    </footer>
+    <td><%= link_to book.title,book_path(book.id)%></td>
+    <td><%= book.body %></td>
+ </tr>
+<% end %>
