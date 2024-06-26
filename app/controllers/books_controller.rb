@@ -2,10 +2,12 @@ class BooksController < ApplicationController
   def create
     @book = Book.new(book_params)
     @book.user_id = current_user.id
-    @book.save
+    if @book.save
     redirect_to book_path(@book)
+    end
+    render :index
   end
-  
+
   def index
     @user = current_user
     @books = Book.all
@@ -33,9 +35,9 @@ class BooksController < ApplicationController
     book.destroy  # データ（レコード）を削除
     redirect_to books_path
   end
-  
-  
-  
+
+
+
   private
 
   def book_params
