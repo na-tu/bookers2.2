@@ -5,12 +5,15 @@ class BooksController < ApplicationController
     if @book.save
     redirect_to book_path(@book)
     end
+    @user = current_user
+    @books = Book.all
     render :index
   end
 
   def index
     @user = current_user
     @books = Book.all
+    @book = Book.new
   end
 
   def show

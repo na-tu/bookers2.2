@@ -7,7 +7,6 @@ class UsersController < ApplicationController
     @book = Book.new
     @book.user_id = current_user.id
     @books = @user.books
-    #? redirect_to user_path(user.id)
  end
 
   def index

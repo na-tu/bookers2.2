@@ -23,19 +23,12 @@
 	            <th><%= @user.introduction%></th>
 
 	            <%= link_to edit_user_path(@user) do %>
-              <i class="fas fa-user-edit"></i></i> 
+              <i class="fas fa-wrench"></i> 
               <% end %>
            </tbody>
 
           <h2>New book</h2>
-            <% if @book.errors.any? %>
-            <%= @book.errors.count %>errors prohibited this obj from being saved:
-              <ul>
-                <% @book.errors.full_messages.each do |message| %>
-                  <li><%= message %></li>
-                 <% end %>
-              </ul>
-           <% end %>
+            
            
             <%= form_with model: @book do |f| %>
             
