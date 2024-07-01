@@ -21,7 +21,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     else
     redirect_to user_path(current_user)
-   end
+    end
   end 
   
   def update

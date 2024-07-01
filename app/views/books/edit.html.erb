@@ -5,29 +5,25 @@
    <%= flash[:notice]%>
  </div>
 
-<%= form_with model: @book do |f| %>
+  <%= form_with model: @book do |f| %>
 
-  <h4>Title</h4>
-  <%= f.text_field :title %>
+    <h4>Title</h4>
+      <%= f.text_field :title %>
   
-  <h4>Opinion</h4>
-  <%= f.text_area :body %>
+    <h4>Opinion</h4>
+      <%= f.text_area :body %>
 
-  <%= f.submit 'Update Book' %>
+      <%= f.submit 'Update Book' %>
 
-<%= link_to 'Show', book_path(@book) %>
-<%= link_to 'Back', books_path %>
+      <%= link_to 'Show', book_path(@book) %>
+      <%= link_to 'Back', books_path %>
 
- <% if @book.errors.any? %>
-
+      <% if @book.errors.any? %>
       <%= @book.errors.count %>error
       <% @book.errors.full_messages.each do |message| %>
-   <ul>  
-    <li><%= message %></li>
-   </ul>
+        <ul>  
+          <li><%= message %></li>
+        </ul>
       <% end %>
- 
-  
-     <% end %>
-
-<% end %>
+      <% end %>
+      <% end %>
