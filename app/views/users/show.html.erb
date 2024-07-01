@@ -8,14 +8,10 @@
           <%= flash[:notice]%>
         </div>
 
-      
           <h2>User info</h2>
             <tbody>
-              <% if current_user.profile_image .attached? %>
-              <%= image_tag profile_image, size: "100x100" %>
-              <% else %>
-              <%= image_tag 'no_image', size: "100x100" %>
-              <% end %>
+                  <%= image_tag @user.get_profile_image, size: "100x100" %>
+
    
 	            <br><th>name</th>
               <th><%= @user.name %></th><br>
@@ -23,12 +19,19 @@
 	            <th><%= @user.introduction%></th>
 
 	            <%= link_to edit_user_path(@user) do %>
-              <i class="fas fa-wrench"></i> 
+	            <i class="fas fa-user-cog"></i>
               <% end %>
            </tbody>
 
           <h2>New book</h2>
-            
+  <% if @book.errors.any? %>
+    <%= @book.errors.count %>件のエラーが発生しました
+      <ul>
+        <% @book.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+  <% end %>
            
             <%= form_with model: @book do |f| %>
             
@@ -53,10 +56,8 @@
      <% @books.each do |book| %>
        <tr>
          <span>
-           <% if current_user.profile_image .attached? %>
-           <%= image_tag profile_image, size: "100x100" %>
-           <% else %>
-           <%= image_tag 'no_image', size: "100x100" %>
+          <%=link_to user_path(book.user) do %>
+           <%= image_tag @user.get_profile_image, size: "100x100" %>
            <% end %>
          </span>
     

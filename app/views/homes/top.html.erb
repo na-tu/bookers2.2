@@ -12,16 +12,20 @@
   </header>
   
   <main>
-    <h1>welcome to bookers!!</h1>
+    <h1>welcome to<i class="fas fa-book"></i> bookers!!</h1>
       <p>you can share and exchange  your opinions , inpressions , and emotions</p>
       <p> about various books!</p>
-        <a href="/users/sign_in">Log in</a>
-        <a href="/users/sign_up">Sign up</a>
+      
+      
+     <div>
+       <%= link_to "Log in", new_user_session_path %>
+	   </div>
+	   
+	   <div>
+	     <%= link_to "Sign up", new_user_registration_path %>
+     </div>
+
   </main>
-  
-  <footer>
-      <p>CopyRight Infratop.inc</p>
-  </footer>
 </body>
 </div>
 </div>

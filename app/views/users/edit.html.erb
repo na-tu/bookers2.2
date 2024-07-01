@@ -16,7 +16,8 @@
   <P>name</P>
   <%= f.text_field :name %>
   
-  <P>image</P>
+  <P>Image</P>
+  <%= f.file_field :profile_image, accept: "image/*" %>  
   
   <P>Introduction</P>
   <%= f.text_field :introduction %>
@@ -24,8 +25,3 @@
     <%= f.submit "Update User" %>
 
 <% end %>
-
-    <footer>
-      	<p>CopyRight Infratop.inc</p>
-    </footer>
-

@@ -2,7 +2,6 @@ class UsersController < ApplicationController
   before_action :is_matching_login_user, only: [:edit, :update]
   
  def show   
-    @user = current_user.profile_image.find(params[:id])
     @user = User.find(params[:id])
     @book = Book.new
     @book.user_id = current_user.id
@@ -17,12 +16,18 @@ class UsersController < ApplicationController
   end
 
   def edit
+    user = User.find(params[:id])
+    if current_user== user
     @user = User.find(params[:id])
-  end
+    else
+    redirect_to user_path(current_user)
+   end
+  end 
   
   def update
     @user = User.find(params[:id])#ユーザーの取得
    if @user.update(user_params)#ユーザーのアップデート
+   flash[:notice] = "You have updated user successfully."
   redirect_to user_path(@user.id)#ユーザーの詳細ページへのパス
    else
   render :edit
