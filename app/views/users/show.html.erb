@@ -59,7 +59,7 @@
      <% @books.each do |book| %>
        <tr>
          <td>
-          <%=link_to user_path(book.user) do %>
+          <%=link_to user_path(book.user) do %>　<!--画像にリンクをつける場合はlink_toが必要ーー＞
            <%= image_tag @user.get_profile_image, size: "100x100" %>
            <% end %>
          </td>

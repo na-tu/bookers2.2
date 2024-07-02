@@ -16,7 +16,7 @@ class UsersController < ApplicationController
   end
 
   def edit
-    user = User.find(params[:id])
+    user = User.find(params[:id])#editの中だけで確認するために＠はいれていない。
     if current_user== user
     @user = User.find(params[:id])
     else
